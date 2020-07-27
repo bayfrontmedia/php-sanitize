@@ -87,6 +87,14 @@ Filters string for valid email characters.
 
 - (string)
 
+**Example:**
+
+```
+use Bayfront\Sanitize\Sanitize;
+
+echo Sanitize::email('email@example.com');
+```
+
 <hr />
 
 ### url
@@ -102,6 +110,14 @@ Filters string for valid URL characters.
 **Returns:**
 
 - (string)
+
+**Example:**
+
+```
+use Bayfront\Sanitize\Sanitize;
+
+echo Sanitize::url('https://www.example.com);
+```
 
 <hr />
 
