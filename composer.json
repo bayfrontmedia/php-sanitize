@@ -1,0 +1,38 @@
+{
+  "name": "bayfrontmedia/php-sanitize",
+  "description": "Simple class used to sanitize, filter and cast data.",
+  "homepage": "https://github.com/bayfrontmedia/php-sanitize",
+  "license" : "MIT",
+  "version": "1.0.0",
+  "type": "library",
+  "keywords": [
+    "php",
+    "sanitize",
+    "filter",
+    "cast",
+    "xss",
+    "escape"
+  ],
+  "authors": [
+    {
+      "name": "John Robinson",
+      "email": "john@bayfrontmedia.com",
+      "homepage": "https://www.bayfrontmedia.com",
+      "role": "Developer"
+    }
+  ],
+  "funding": [
+    {
+      "type": "patreon",
+      "url": "https://www.patreon.com/bayfrontmedia"
+    }
+  ],
+  "require": {
+    "php": ">=7.1.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Bayfront\\Sanitize\\": "src/"
+    }
+  }
+}
