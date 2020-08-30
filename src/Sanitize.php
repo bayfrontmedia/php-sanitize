@@ -1,13 +1,12 @@
 <?php
+
 /**
- * Simple class used to sanitize, filter and cast data
- *
- * @version     1.0.0
- * @link        https://github.com/bayfrontmedia/php-sanitize
- * @license     MIT https://opensource.org/licenses/MIT
- * @copyright   2020 Bayfront Media https://www.bayfrontmedia.com
- * @author      John Robinson <john@bayfrontmedia.com>
+ * @package php-sanitize
+ * @link https://github.com/bayfrontmedia/php-sanitize
+ * @author John Robinson <john@bayfrontmedia.com>
+ * @copyright 2020 Bayfront Media
  */
+
 
 namespace Bayfront\Sanitize;
 
@@ -57,7 +56,7 @@ class Sanitize
     }
 
     /**
-     * Filters string for valid email characters
+     * Filters string for valid email characters.
      *
      * @param string $email
      *
@@ -70,7 +69,7 @@ class Sanitize
     }
 
     /**
-     * Filters string for valid URL characters
+     * Filters string for valid URL characters.
      *
      * @param string $url
      *
@@ -83,7 +82,7 @@ class Sanitize
     }
 
     /**
-     * Filters string for valid path syntax, with optional trailing slash
+     * Filters string for valid path syntax, with optional trailing slash.
      *
      * @param string $path
      * @param bool $trailing (Require trailing slash)
@@ -121,7 +120,7 @@ class Sanitize
     }
 
     /**
-     * Escape string
+     * Escape string.
      *
      * @param string $string
      * @param string $encoding
@@ -135,7 +134,7 @@ class Sanitize
     }
 
     /**
-     * Escape recursively
+     * Escape recursively.
      *
      * @param $value
      *
