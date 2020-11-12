@@ -3,7 +3,6 @@
   "description": "Simple class used to sanitize, filter and cast data.",
   "homepage": "https://github.com/bayfrontmedia/php-sanitize",
   "license" : "MIT",
-  "version": "1.0.0",
   "type": "library",
   "keywords": [
     "php",
