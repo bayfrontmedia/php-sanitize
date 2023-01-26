@@ -1,13 +1,5 @@
 <?php
 
-/**
- * @package php-sanitize
- * @link https://github.com/bayfrontmedia/php-sanitize
- * @author John Robinson <john@bayfrontmedia.com>
- * @copyright 2020 Bayfront Media
- */
-
-
 namespace Bayfront\Sanitize;
 
 class Sanitize
@@ -20,38 +12,20 @@ class Sanitize
      * @param mixed $var
      * @param string $type (Types include: int, float, bool, object, array, string)
      *
-     * @return mixed
+     * @return string|int|bool|array|object|float
      */
 
-    public static function cast($var, string $type = 'string')
+    public static function cast(mixed $var, string $type = 'string'): string|int|bool|array|object|float
     {
 
-        switch ($type) {
-
-            case 'int':
-
-                return (int)$var;
-
-            case 'float':
-
-                return (float)$var;
-
-            case 'bool':
-
-                return (bool)$var;
-
-            case 'object':
-
-                return (object)$var;
-
-            case 'array':
-
-                return (array)$var;
-
-            default: // string
-
-                return (string)$var;
-        }
+        return match ($type) {
+            'int' => (int)$var,
+            'float' => (float)$var,
+            'bool' => (bool)$var,
+            'object' => (object)$var,
+            'array' => (array)$var,
+            default => (string)$var,
+        };
 
     }
 
@@ -141,14 +115,14 @@ class Sanitize
      * @return void (recursive)
      */
 
-    private static function _escapeRecursive(&$value)
+    private static function _escapeRecursive(&$value): void
     { // & to pass by reference
         $value = htmlspecialchars($value, ENT_QUOTES, self::$encoding);
     }
 
     // Encoding method used when escaping recursively
 
-    private static $encoding;
+    private static mixed $encoding;
 
     /**
      * Escape strings and arrays. Other data types return their original value.
@@ -159,7 +133,7 @@ class Sanitize
      * @return mixed
      */
 
-    public static function escape($value, string $encoding = 'UTF-8')
+    public static function escape(mixed $value, string $encoding = 'UTF-8'): mixed
     {
         if (is_string($value)) {
 
