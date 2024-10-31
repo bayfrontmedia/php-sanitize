@@ -1,29 +1,38 @@
-<?php
+<?php /** @noinspection PhpUnused */
 
 namespace Bayfront\Sanitize;
 
 class Sanitize
 {
 
+    /*
+     * Cast type constants
+     */
+
+    public const CAST_ARRAY = 'array';
+    public const CAST_BOOL = 'bool';
+    public const CAST_FLOAT = 'float';
+    public const CAST_INT = 'int';
+    public const CAST_OBJECT = 'object';
+    public const CAST_STRING = 'string';
+
     /**
      * Ensures a given variable will be returned as a specific type.
      * Defaults to "string"
      *
      * @param mixed $var
-     * @param string $type (Types include: int, float, bool, object, array, string)
-     *
-     * @return string|int|bool|array|object|float
+     * @param string $type (Any CAST_* constant)
+     * @return mixed
      */
-
-    public static function cast(mixed $var, string $type = 'string'): string|int|bool|array|object|float
+    public static function cast(mixed $var, string $type = self::CAST_STRING): mixed
     {
 
         return match ($type) {
-            'int' => (int)$var,
-            'float' => (float)$var,
-            'bool' => (bool)$var,
-            'object' => (object)$var,
             'array' => (array)$var,
+            'bool' => (bool)$var,
+            'float' => (float)$var,
+            'int' => (int)$var,
+            'object' => (object)$var,
             default => (string)$var,
         };
 
@@ -33,10 +42,8 @@ class Sanitize
      * Filters string for valid email characters.
      *
      * @param string $email
-     *
      * @return string
      */
-
     public static function email(string $email): string
     {
         return filter_var($email, FILTER_SANITIZE_EMAIL);
@@ -46,10 +53,8 @@ class Sanitize
      * Filters string for valid URL characters.
      *
      * @param string $url
-     *
      * @return string
      */
-
     public static function url(string $url): string
     {
         return filter_var($url, FILTER_SANITIZE_URL);
@@ -60,10 +65,8 @@ class Sanitize
      *
      * @param string $path
      * @param bool $trailing (Require trailing slash)
-     *
      * @return string
      */
-
     public static function path(string $path, bool $trailing = true): string
     {
 
@@ -84,9 +87,7 @@ class Sanitize
         $path = strtr($path, $replacements);
 
         if (true === $trailing) {
-
             return $path . '/';
-
         }
 
         return $path;
@@ -98,10 +99,8 @@ class Sanitize
      *
      * @param string $string
      * @param string $encoding
-     *
      * @return string
      */
-
     private static function _escapeString(string $string, string $encoding): string
     {
         return htmlspecialchars($string, ENT_QUOTES, $encoding);
@@ -111,10 +110,8 @@ class Sanitize
      * Escape recursively.
      *
      * @param $value
-     *
      * @return void (recursive)
      */
-
     private static function _escapeRecursive(&$value): void
     { // & to pass by reference
         $value = htmlspecialchars($value, ENT_QUOTES, self::$encoding);
@@ -129,10 +126,8 @@ class Sanitize
      *
      * @param mixed $value
      * @param string $encoding
-     *
      * @return mixed
      */
-
     public static function escape(mixed $value, string $encoding = 'UTF-8'): mixed
     {
         if (is_string($value)) {
@@ -143,9 +138,7 @@ class Sanitize
 
             self::$encoding = $encoding;
 
-            /** @uses _escapeRecursive */
-
-            array_walk_recursive($value, 'self::_escapeRecursive');
+            array_walk_recursive($value, [self::class, '_escapeRecursive']);
 
             return $value;
 

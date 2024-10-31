@@ -48,16 +48,16 @@ Ensures a given variable will be returned as a specific type. Defaults to "strin
 **Parameters:**
 
 - `$var` (mixed)
-- `$type = 'string'` (string)
+- `$type = self::CAST_STRING` (string): Any `CAST_*` constant
 
-Valid `$type` values are:
+Valid cast types are available as the following constants:
 
-- `int`
-- `float`
-- `bool`
-- `object`
-- `array`
-- `string`
+- `CAST_ARRAY`: array
+- `CAST_BOOL`: bool
+- `CAST_FLOAT`: float
+- `CAST_INT`: int
+- `CAST_OBJECT`: object
+- `CAST_STRING`: string
 
 **Returns:**
 
@@ -70,7 +70,7 @@ use Bayfront\Sanitize\Sanitize;
 
 $input = '1.42';
 
-echo Sanitize::cast($input, 'float');
+echo Sanitize::cast($input, Sanitize::CAST_FLOAT);
 
 ```
 

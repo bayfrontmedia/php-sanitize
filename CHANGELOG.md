@@ -12,6 +12,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `Fixed` for any bug fixes.
 - `Security` in case of vulnerabilities
 
+## 2.1.0 - 2024.10.31
+
+### Added
+
+- Added type constants for `cast` method.
+
+### Changed
+
+- Updated GitHub issue templates.
+- Fixed depreciation notice using `array_walk_recursive` in `escape` method.
+
 ## 2.0.0 - 2023.01.26
 
 ### Added
