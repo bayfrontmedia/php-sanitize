@@ -12,6 +12,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `Fixed` for any bug fixes.
 - `Security` in case of vulnerabilities
 
+## 2.1.2- 2025.06.17
+
+### Fixed
+
+- Fixed bug where non-string values were passed to `htmlspecialchars` in `_escapeRecursive` method.
+
 ## 2.1.1- 2024.12.23
 
 ### Added

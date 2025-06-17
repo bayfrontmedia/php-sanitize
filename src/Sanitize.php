@@ -114,7 +114,9 @@ class Sanitize
      */
     private static function _escapeRecursive(&$value): void
     { // & to pass by reference
-        $value = htmlspecialchars($value, ENT_QUOTES, self::$encoding);
+        if (is_string($value)) {
+            $value = htmlspecialchars($value, ENT_QUOTES, self::$encoding);
+        }
     }
 
     // Encoding method used when escaping recursively
